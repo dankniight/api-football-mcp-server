@@ -49,7 +49,7 @@ graph TD
     classDef mcp fill:#2196F3,stroke:#1565C0,stroke-width:2px,color:#fff
     classDef functions fill:#FF9800,stroke:#F57C00,stroke-width:2px,color:#fff
     classDef external fill:#9C27B0,stroke:#6A1B9A,stroke-width:3px,color:#fff
-    classDef server fill:#E3F2FD,stroke:#1976D2,stroke-width:2px
+    classDef server fill:#E3F2FD,stroke:#1976D2,stroke-width:2px,color:#1976D2
     
     class LLM llm
     class MCP mcp
