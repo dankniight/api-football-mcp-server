@@ -8,7 +8,7 @@ load_dotenv()
 mcp = FastMCP("API-Football MCP")
 
 API_KEY = os.getenv("API_FOOTBALL_KEY")
-API_HOST = os.getenv("API_FOOTBALL_HOST", "https://v3.football.api-sports.io")
+API_HOST = "https://v3.football.api-sports.io"
 
 def make_api_request(endpoint: str, params: dict = None) -> dict:
     if not API_KEY:
