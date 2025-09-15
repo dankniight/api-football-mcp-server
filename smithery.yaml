@@ -1,0 +1,228 @@
+name: API-Football MCP Server
+description: A Model Context Protocol (MCP) server that provides access to football/soccer data through the API-Football service.
+version: 1.0.0
+author: 
+license: MIT
+
+environment:
+  variables:
+    - name: API_FOOTBALL_KEY
+      description: API key for the API-Football service
+      required: true
+
+tools:
+  - name: get_leagues
+    description: Get available leagues
+    parameters:
+      - name: country
+        type: string
+        required: false
+        description: Filter leagues by country
+      - name: season
+        type: integer
+        required: false
+        description: Filter leagues by season
+
+  - name: get_league_info
+    description: Get detailed league information
+    parameters:
+      - name: league_id
+        type: integer
+        required: true
+        description: ID of the league to get information for
+
+  - name: get_countries
+    description: Get available countries
+    parameters: []
+
+  - name: get_standings
+    description: Get league standings
+    parameters:
+      - name: league_id
+        type: integer
+        required: true
+        description: ID of the league
+      - name: season
+        type: integer
+        required: true
+        description: Season year
+
+  - name: get_teams
+    description: Get teams in a league
+    parameters:
+      - name: league_id
+        type: integer
+        required: true
+        description: ID of the league
+      - name: season
+        type: integer
+        required: false
+        description: Season year
+
+  - name: get_team_stats
+    description: Get statistics for a team
+    parameters:
+      - name: team_id
+        type: integer
+        required: true
+        description: ID of the team
+      - name: league_id
+        type: integer
+        required: true
+        description: ID of the league
+      - name: season
+        type: integer
+        required: false
+        description: Season year
+
+  - name: get_team_id_by_name
+    description: Get team ID by team name
+    parameters:
+      - name: team_name
+        type: string
+        required: true
+        description: Name of the team
+      - name: league_id
+        type: integer
+        required: false
+        description: ID of the league to filter by
+      - name: season
+        type: integer
+        required: false
+        description: Season year to filter by
+
+  - name: get_team_transfers
+    description: Get transfer information for a team
+    parameters:
+      - name: team_id
+        type: integer
+        required: true
+        description: ID of the team
+
+  - name: get_players
+    description: Get players in a team
+    parameters:
+      - name: team_id
+        type: integer
+        required: true
+        description: ID of the team
+      - name: season
+        type: integer
+        required: true
+        description: Season year
+
+  - name: get_player_stats
+    description: Get statistics for a player
+    parameters:
+      - name: player_id
+        type: integer
+        required: true
+        description: ID of the player
+      - name: season
+        type: integer
+        required: true
+        description: Season year
+
+  - name: get_fixtures
+    description: Get fixtures/matches
+    parameters:
+      - name: league_id
+        type: integer
+        required: false
+        description: ID of the league
+      - name: team_id
+        type: integer
+        required: false
+        description: ID of the team
+      - name: season
+        type: integer
+        required: false
+        description: Season year
+      - name: date
+        type: string
+        required: false
+        description: Date in YYYY-MM-DD format
+      - name: next
+        type: integer
+        required: false
+        description: Number of upcoming fixtures to get
+      - name: last
+        type: integer
+        required: false
+        description: Number of past fixtures to get
+
+  - name: get_fixture_stats
+    description: Get statistics for a fixture
+    parameters:
+      - name: fixture_id
+        type: integer
+        required: true
+        description: ID of the fixture
+
+  - name: get_predictions
+    description: Get predictions for a fixture
+    parameters:
+      - name: fixture_id
+        type: integer
+        required: true
+        description: ID of the fixture
+
+  - name: get_head_to_head
+    description: Get head-to-head statistics between teams
+    parameters:
+      - name: team1_id
+        type: integer
+        required: true
+        description: ID of the first team
+      - name: team2_id
+        type: integer
+        required: true
+        description: ID of the second team
+
+  - name: get_top_scorers
+    description: Get top scorers in a league
+    parameters:
+      - name: league_id
+        type: integer
+        required: true
+        description: ID of the league
+      - name: season
+        type: integer
+        required: true
+        description: Season year
+
+  - name: get_top_assists
+    description: Get top assisters in a league
+    parameters:
+      - name: league_id
+        type: integer
+        required: true
+        description: ID of the league
+      - name: season
+        type: integer
+        required: true
+        description: Season year
+
+  - name: get_venue
+    description: Get venue information
+    parameters:
+      - name: venue_id
+        type: integer
+        required: true
+        description: ID of the venue
+
+  - name: get_injuries
+    description: Get injury information
+    parameters:
+      - name: team_id
+        type: integer
+        required: false
+        description: ID of the team
+      - name: player_id
+        type: integer
+        required: false
+        description: ID of the player
+      - name: season
+        type: integer
+        required: true
+        description: Season year
