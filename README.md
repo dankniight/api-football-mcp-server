@@ -47,8 +47,8 @@ graph LR
 
 Clone the repository:
 ```bash
-git clone https://github.com/your-username/api-football-mcp.git
-cd api-football-mcp
+git clone https://github.com/danknight/api-football-mcp-server.git
+cd api-football-mcp-server
 ```
 
 Install dependencies:
@@ -61,7 +61,6 @@ pip install -r requirements.txt
 Create a `.env` file with your credentials:
 ```env
 API_FOOTBALL_KEY=your_api_key_here
-API_FOOTBALL_HOST=v3.football.api-sports.io
 ```
 
 Sign up on [API-Football](https://dashboard.api-football.com/) to get an API key.
