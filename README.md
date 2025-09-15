@@ -7,40 +7,55 @@ This creates a standardised way for language models to interact with this API, a
 ## Architecture
 
 ```mermaid
-graph LR
-    LLM[LLM with MCP Client]
+graph TD
+    LLM["`**LLM with MCP Client**
+    Claude/GPT-4/etc.`"]
     
-    subgraph Server ["MCP Server"]
-        MCP[MCP Protocol Handler]
-        API1[Function: get_leagues]
-        API2[Function: get_teams] 
-        API3[Function: get_players]
-        API4[Function: get_fixtures]
+    subgraph Server ["`**MCP Server**
+    Football Data Gateway`"]
+        direction TB
+        MCP["`**MCP Protocol Handler**
+        Request Router & Response Manager`"]
+        
+        subgraph Functions ["`**Available Functions**`"]
+            direction LR
+            API1["`**get_leagues**
+            Fetch league data`"]
+            API2["`**get_teams**
+            Fetch team data`"] 
+            API3["`**get_players**
+            Fetch player data`"]
+            API4["`**get_fixtures**
+            Fetch match data`"]
+        end
+        
+        MCP --> Functions
     end
     
-    ExtAPI[API-Football API]
+    ExtAPI["`**API-Football**
+    External Sports Data API`"]
     
-    LLM <--> MCP
-    MCP <--> API1
-    MCP <--> API2
-    MCP <--> API3
-    MCP <--> API4
+    %% Main connections
+    LLM <===> MCP
     
+    %% Function connections to external API
     API1 <--> ExtAPI
     API2 <--> ExtAPI
     API3 <--> ExtAPI
     API4 <--> ExtAPI
     
-    classDef user fill:#e1f5fe
-    classDef llm fill:#f3e5f5
-    classDef mcp fill:#e8f5e8
-    classDef api fill:#fff3e0
-    classDef external fill:#fce4ec
+    %% Styling with improved colors
+    classDef llm fill:#4CAF50,stroke:#2E7D32,stroke-width:3px,color:#fff
+    classDef mcp fill:#2196F3,stroke:#1565C0,stroke-width:2px,color:#fff
+    classDef functions fill:#FF9800,stroke:#F57C00,stroke-width:2px,color:#fff
+    classDef external fill:#9C27B0,stroke:#6A1B9A,stroke-width:3px,color:#fff
+    classDef server fill:#E3F2FD,stroke:#1976D2,stroke-width:2px
     
-    class User user
     class LLM llm
-    class MCP,API1,API2,API3,API4 mcp
+    class MCP mcp
+    class API1,API2,API3,API4 functions
     class ExtAPI external
+    class Server server
 ```
 
 ## 1. Clone and Setup
